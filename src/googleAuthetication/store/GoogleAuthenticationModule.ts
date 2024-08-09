@@ -1,11 +1,11 @@
 import actions, { GoogleAuthenticationActions } from "./actions"
 import mutations, { AuthenticationMutations } from "./mutations"
-import state, { AuthenticationState } from "./states"
+import state, { GoogleAuthenticationState } from "./states"
 
 
 export interface GoogleAuthenticationModule {
     namespaced: true
-    state: AuthenticationState
+    state: GoogleAuthenticationState
     actions: GoogleAuthenticationActions
     mutations: AuthenticationMutations
 }

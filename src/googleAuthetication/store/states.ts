@@ -1,8 +1,8 @@
-export interface AuthenticationState {
+export interface GoogleAuthenticationState {
     isGoogleAuthenticated: boolean
 }
 
-const state: AuthenticationState = {
+const state: GoogleAuthenticationState = {
     isGoogleAuthenticated: false
 }
 

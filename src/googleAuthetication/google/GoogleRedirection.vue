@@ -20,17 +20,12 @@ export default {
     },
     methods: {
         ...mapActions(googleauthenticationModule, [
-            'requestAccessTokenToDjangoRedirection',
-            'requestUserInfoToDjango',
+            'requestGoogleAccessTokenToDjangoRedirection',
         ]),
         async setRedirectData () {
             const code = this.$route.query.code
-            await this.requestAccessTokenToDjangoRedirection({ code })
-
-            const userInfo = await this.requestUserInfoToDjango()
-            const email = userInfo.email
-            this.password = Math.random().toString(36).slice(-8)
-            this.logintype = "Google"
+            await this.requestGoogleAccessTokenToDjangoRedirection({ code })
+            const accessToken = localStorage.getItem("GoogleAccessToken")
         }
     },
     async created () {

@@ -1,12 +1,12 @@
 import { ActionContext } from "vuex"
-import { AuthenticationState } from "./states"
+import { GoogleAuthenticationState } from "./states"
 import { AxiosResponse } from "axios"
 import axiosInst from "@/utility/axiosInstance"
 import {REQUEST_IS_GOOGLE_AUTHENTICATED_TO_DJANGO} from "./mutation-types"
 export type GoogleAuthenticationActions = {
     requestGoogleOauthRedirectionToDjango(): Promise<void>
-    requestAccessTokenToDjangoRedirection(
-        context: ActionContext<AuthenticationState, any>, 
+    requestGoogleAccessTokenToDjangoRedirection(
+        context: ActionContext<GoogleAuthenticationState, any>, 
         payload: { code: string }): Promise<void>
 }
 
@@ -16,12 +16,12 @@ const actions: GoogleAuthenticationActions = {
             window.location.href = res.data.url
         })
     },
-    async requestAccessTokenToDjangoRedirection(
-                context: ActionContext<AuthenticationState, any>, 
+    async requestGoogleAccessTokenToDjangoRedirection(
+                context: ActionContext<GoogleAuthenticationState, any>, 
                 payload: { code: string }): Promise<void> {
 
         try {
-            console.log('requestAccessTokenToDjangoRedirection()')
+            console.log('requestGoogleAccessTokenToDjangoRedirection()')
             const { code } = payload
 
             const response = await axiosInst.djangoAxiosInst.post(
